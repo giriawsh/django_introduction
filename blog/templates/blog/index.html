@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container page-header">
+    <h1>Article(Django)
+        <small>by giria</small>
+    </h1>
+</div>
+<div class="container page-body">
+    <div class="col-md-9" role="main">
+        <div class="body-main">
+            {% for article in article_list %}
+            <div>
+                <h2><a href="/blog/detail/{{article.article_id}}">{{article.title}}</a></h2>
+                <p>
+                    {{article.brief_content}}
+                </p>
+
+<!--                <p>-->
+<!--                    《路人》 不知为何，明明想和你说话,却骗你说，风雨正好，该去写点诗句。不必嘲讽我，你笑出声来，我也当是天籁。不必怀有敌意，你所有心计，我都当是你对我的心意。我的宿命分两段，未遇见你时，和遇见你以后。你治好我的忧郁，而后赐我悲伤。忧郁和悲伤之间的片刻欢喜，透支了我生命全部的热情储蓄。想饮一些酒，让灵魂失重，好被风吹走。可一想到终将是你的路人，便觉得，沦为整个世界的路人。风虽大，都绕过我灵魂。-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    《直到这个世界禁止爱你》我曾以为，面壁思过就会忘记你，直到每一面墙都浮现你的样子，直到世间万物都和你身影重叠。纵然找到身体里，哪根骨头属于你，也绝不拆下还你。纵然世上有三千个你，每个我都要娶。直到你成为我头上第一根白发，也要把你的笑声藏在我皱纹里。直到时间之河撞上昆仑山，迎面折回，把世界压在海底，直到我变成贝壳，也要想着你，结出珍珠千百粒。直到这个世界禁止爱你,今夜，我的眼泪被世界拒绝，又不能，在这波涛汹涌的字句里，游向你。-->
+<!--                </p>-->
+            </div>
+            {% endfor %}
+<!--            <div>-->
+<!--                <h2>-->
+<!--                    title2-->
+<!--                </h2>-->
+<!--                <p>-->
+<!--                    《路人》 不知为何，明明想和你说话,却骗你说，风雨正好，该去写点诗句。不必嘲讽我，你笑出声来，我也当是天籁。不必怀有敌意，你所有心计，我都当是你对我的心意。我的宿命分两段，未遇见你时，和遇见你以后。你治好我的忧郁，而后赐我悲伤。忧郁和悲伤之间的片刻欢喜，透支了我生命全部的热情储蓄。想饮一些酒，让灵魂失重，好被风吹走。可一想到终将是你的路人，便觉得，沦为整个世界的路人。风虽大，都绕过我灵魂。-->
+<!--                </p>-->
+<!--                <p>《直到这个世界禁止爱你》我曾以为，面壁思过就会忘记你，直到每一面墙都浮现你的样子，直到世间万物都和你身影重叠。纵然找到身体里，哪根骨头属于你，也绝不拆下还你。纵然世上有三千个你，每个我都要娶。直到你成为我头上第一根白发，也要把你的笑声藏在我皱纹里。直到时间之河撞上昆仑山，迎面折回，把世界压在海底，直到我变成贝壳，也要想着你，结出珍珠千百粒。直到这个世界禁止爱你,今夜，我的眼泪被世界拒绝，又不能，在这波涛汹涌的字句里，游向你。-->
+<!--                </p>-->
+<!--            </div>-->
+        </div>
+        <div class="body-footer">
+            <div class="col-md-4 col-md-offset-3">
+            <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                 <a href="/blog/index?page={{previous_page}}" aria-label="Previous">
+                   <span aria-hidden="true">&laquo;</span>
+                 </a>
+                 </li>
+                {% for num in page_num %}
+                 <li><a href="/blog/index?page={{num}}">{{num}}</a></li>
+               {%endfor%}
+                <li>
+                 <a href="/blog/index?page={{next_page}}" aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+                 </a>
+                </li>
+            </ul>
+</nav>
+                </div>
+        </div>
+    </div>
+    <div class="col-md-3" role="complementary">
+        <div>
+            <h2>最新文章</h2>
+            {% for article in top5_article_list%}
+            <h4><a href="/blog/detail/{{article.article_id}}">{{article.title}}</a></h4>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
